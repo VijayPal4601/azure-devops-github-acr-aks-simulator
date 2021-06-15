@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: simulator-app-nginx-ingress-service
+spec:  
+  rules:
+  - http:
+      paths:
+      - path: /sim/
+        pathType: Prefix
+        backend:
+          service:
+           name: simulator-clusterip
+           port:
+            number: 80
+      - path: /restsimulator/
+        pathType: Prefix
+        backend:
+          service:
+           name: restsimulator-clusterip
+           port:
+            number: 80
